@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Contact{% endblock %}
+
+{% block content %}
+
+<section id="contact" class="contact section light-background text-center align-items-center">
+
+    <div class="container section-title">
+        <h2>Contact</h2>
+        <p>Feel free to get in touch with us</p>
+    </div>
+
+    <div class="container" data-aos-delay="100">
+        <div class="row gy-4 justify-content-center">
+            <div class="col-lg-6">
+                <div class="row gy-4">
+                    <div class="col-lg-12">
+                        <div class="info-item d-flex flex-column align-items-center text-center" data-aos-delay="200">
+                            <i class="bi bi-geo-alt display-4"></i>
+                            <h3>Address</h3>
+                            <p>5151 Park Ave, Fairfield, CT 06825, United States</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="info-item d-flex flex-column align-items-center text-center" data-aos-delay="300">
+                            <i class="bi bi-telephone display-4"></i>
+                            <h3>Call Us</h3>
+                            <p>+1 (860) 964-1795</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="info-item d-flex flex-column align-items-center text-center" data-aos-delay="400">
+                            <i class="bi bi-envelope display-4"></i>
+                            <h3>Email Us</h3>
+                            <p>pavanreddy901405@gmail.com</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <form id="contact-form" method="post" class="php-email-form">
+                    {% csrf_token %}
+                    <div class="row gy-4">
+                        <div class="col-md-6">
+                            <input type="text" name="name" class="form-control" placeholder="Your Name" required>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="email" name="email" class="form-control" placeholder="Your Email" required>
+                        </div>
+                        <div class="col-md-12">
+                            <input type="text" name="subject" class="form-control" placeholder="Subject" required>
+                        </div>
+                        <div class="col-md-12">
+                            <textarea name="message" class="form-control" rows="4" placeholder="Message"
+                                required></textarea>
+                        </div>
+                        <div class="col-md-12 text-center">
+                            <div id="form-message" class="alert d-none"></div>
+                            <button type="submit" class="btn btn-primary">Send Message</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<script>
+    document.getElementById("contact-form").addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        let formData = new FormData(this);
+        fetch("{% url 'contact' %}", {
+            method: "POST",
+            body: formData
+        })
+            .then(response => response.json())
+            .then(data => {
+                let messageDiv = document.getElementById("form-message");
+                messageDiv.classList.remove("d-none");
+
+                if (data.success) {
+                    messageDiv.classList.add("alert-success");
+                    messageDiv.textContent = "Your message has been sent successfully!";
+                    document.getElementById("contact-form").reset();
+                } else {
+                    messageDiv.classList.add("alert-danger");
+                    messageDiv.textContent = "Error: " + data.error;
+                }
+            })
+            .catch(error => console.error("Error:", error));
+    });
+</script>
+
+{% endblock %}

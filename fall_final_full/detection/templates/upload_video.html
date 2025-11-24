@@ -1,0 +1,145 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Video Upload{% endblock %}
+
+{% block content %}
+
+<style>
+    .video-container {
+        width: 100%;
+        height: auto;
+        display: block;
+        margin: auto;
+        border-radius: 10px;
+    }
+
+    /* Loader Styles */
+    .loading-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.7);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        color: white;
+        font-size: 20px;
+        z-index: 9999;
+        display: none;
+        /* Initially hidden */
+    }
+
+    .progress-bar-container {
+        width: 50%;
+        background: #444;
+        border-radius: 10px;
+        overflow: hidden;
+        margin-top: 15px;
+    }
+
+    .progress-bar {
+        height: 20px;
+        width: 0%;
+        background: #4caf50;
+        transition: width 0.4s ease-in-out;
+    }
+</style>
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <h4 class="text-center">Upload a Video</h4>
+            <div class="card p-4 shadow-sm">
+                <form id="videoUploadForm" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="form-outline">
+                        <input type="file" name="video" class="form-control" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary mt-3 w-100">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+<div style="margin-top: 9px;"></div>
+<!-- Loading Overlay -->
+<div id="loadingOverlay" class="loading-overlay">
+    <p>Please hold on... Video is being processed.</p>
+    <div class="progress-bar-container">
+        <div id="progressBar" class="progress-bar"></div>
+    </div>
+    <p id="progressText">0%</p>
+</div>
+
+<script>
+    document.getElementById("videoUploadForm").addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const formData = new FormData(this);
+        document.getElementById("loadingOverlay").style.display = "flex";
+
+        fetch("{% url 'upload_video' %}", {
+            method: "POST",
+            body: formData
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.uploaded_video_url && data.video_path) {
+                    document.getElementById("uploadedVideo").innerHTML = `
+                    <video class="video-container" controls>
+                        <source src="${data.uploaded_video_url}" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                `;
+
+                    // Start real-time progress updates
+                    var eventSource = new EventSource("{% url 'process_video' %}?video_path=" + encodeURIComponent(data.video_path));
+
+                    eventSource.onmessage = function (event) {
+                        let eventData = event.data.split('|');
+                        let progress = parseInt(eventData[0]);
+                        document.getElementById("progressBar").style.width = progress + "%";
+                        document.getElementById("progressText").innerText = progress + "%";
+
+                        if (progress === 100) {
+                            eventSource.close();
+                            let detectedFilename = eventData[1];
+                            let detectedVideoUrl = "/media/results/" + detectedFilename;
+
+                            document.getElementById("detectedVideo").innerHTML = `
+                            <video class="video-container" controls>
+                                <source src="${detectedVideoUrl}" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        `;
+
+                            document.getElementById("loadingOverlay").style.display = "none";
+                        }
+                    };
+                }
+            });
+    });
+</script>
+
+<div class="row mt-4 justify-content-center">
+    <div class="col-md-5">
+        <h5 class="text-center">Original Video</h5>
+        <div class="card p-3 shadow-sm">
+            <div class="video-container" id="uploadedVideo"></div>
+        </div>
+    </div>
+    <div class="col-md-5">
+        <h5 class="text-center">Detected Video</h5>
+        <div class="card p-3 shadow-sm">
+            <div class="video-container" id="detectedVideo"></div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

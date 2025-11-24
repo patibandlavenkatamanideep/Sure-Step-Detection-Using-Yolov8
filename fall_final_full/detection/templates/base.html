@@ -1,0 +1,152 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Your Title{% endblock %}</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+        rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+    <link href="{% static 'vendor/aos/aos.css' %}" rel="stylesheet">
+    <link href="{% static 'vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+    <link href="{% static 'vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+
+    <!-- Main CSS File -->
+    <link href="{% static 'css/main.css' %}" rel="stylesheet">
+
+    {% block extra_head %}{% endblock %}
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <header id="header" class="header d-flex align-items-center sticky-top">
+        <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+
+            <a href="{% url 'index' %}" class="logo d-flex align-items-center">
+                <img src="{% static 'img/logo.jpg' %}" alt="">
+                <h1 class="sitename">SURE STEP DETECTION</h1>
+            </a>
+            <!-- Navbar -->
+            <nav id="navmenu" class="navmenu">
+                <ul>                  
+                    {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        {% if request.path == '/' %}
+                        <a class="nav-link active" aria-current="page" href="{% url 'index' %}">HOME</a>
+                        {% else %}
+                        <a class="nav-link" aria-current="page" href="{% url 'index' %}">HOME</a>
+                        {% endif %}
+                    </li>
+                    <li class="nav-item">
+                        {% if request.path == '/upload-image/' %}
+                        <a class="nav-link active" aria-current="page" href="{% url 'upload_image' %}">UPLOAD IMAGE</a>
+                        {% else %}
+                        <a class="nav-link" aria-current="page" href="{% url 'upload_image' %}">UPLOAD IMAGE</a>
+                        {% endif %}
+                    </li>
+                    <li class="nav-item">
+                        {% if request.path == '/upload-video/' %}
+                        <a class="nav-link active" aria-current="page" href="{% url 'upload_video' %}">UPLOAD VIDEO</a>
+                        {% else %}
+                        <a class="nav-link" aria-current="page" href="{% url 'upload_video' %}">UPLOAD VIDEO</a>
+                        {% endif %}
+                    </li>
+                    <li class="nav-item">
+                        {% if request.path == '/contact/' %}
+                        <a class="nav-link active" aria-current="page" href="{% url 'contact' %}">CONTACT US</a>
+                        {% else %}
+                        <a class="nav-link" aria-current="page" href="{% url 'contact' %}">CONTACT US</a>
+                        {% endif %}
+                    </li>
+                    <li class="nav-item">
+                        {% if request.path == '/faq/' %}
+                        <a class="nav-link active" aria-current="page" href="{% url 'faq' %}">FAQ'S</a>
+                        {% else %}
+                        <a class="nav-link" aria-current="page" href="{% url 'faq' %}">FAQ'S</a>
+                        {% endif %}
+                    </li>
+                    <li class="nav-item">
+                        {% if request.path == '/logout/' %}
+                        <a class="nav-link active" aria-current="page" href="{% url 'logout' %}">LOGOUT</a>
+                        {% else %}
+                        <a class="nav-link" aria-current="page" href="{% url 'logout' %}">LOGOUT</a>
+                        {% endif %}
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        {% if request.path == '/login/' %}
+                        <a class="nav-link active" aria-current="page" href="{% url 'login' %}">LOGIN</a>
+                        {% else %}
+                        <a class="nav-link" aria-current="page" href="{% url 'login' %}">LOGIN</a>
+                        {% endif %}
+                    </li>
+                    <li class="nav-item">
+                        {% if request.path == '/signup/' %}
+                        <a class="nav-link active" aria-current="page" href="{% url 'signup' %}">SIGNUP</a>
+                        {% else %}
+                        <a class="nav-link" aria-current="page" href="{% url 'signup' %}">SIGNUP</a>
+                        {% endif %}
+                    </li>
+                    {% endif %}
+                </ul>
+                <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+            </nav>
+    </header>
+
+    <main class="main">
+        {% block content %}{% endblock %}
+    </main>
+    {% if request.path != '/login/' and request.path != '/signup/' %}
+    <footer id="footer" class="footer dark-background">
+        <div class="container">
+            <h3 class="sitename">SureStep Detection</h3>
+            <p>Leveraging advanced AI for real-time fall detection, ensuring safety and timely response in various environments.</p>
+            <div class="social-links d-flex justify-content-center">
+                <a href=""><i class="bi bi-twitter-x"></i></a>
+                <a href=""><i class="bi bi-facebook"></i></a>
+                <a href=""><i class="bi bi-instagram"></i></a>
+                <a href=""><i class="bi bi-skype"></i></a>
+                <a href=""><i class="bi bi-linkedin"></i></a>
+            </div>
+            <div class="copyright">
+                <span>Copyright</span> <strong class="px-1 sitename">SureStep Detection</strong> <span>All Rights Reserved</span>
+            </div>
+            <div class="credits">
+                <!-- All the links in the footer should remain intact. -->
+                <!-- You can delete the links only if you've purchased the pro version. -->
+                <!-- Licensing information: https://bootstrapmade.com/license/ -->
+                <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
+                <!-- Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> -->
+            </div>
+        </div>
+    </footer>
+{% endif %}
+    <!-- Vendor JS Files -->
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'vendor/php-email-form/validate.js' %}"></script>
+    <script src="{% static 'vendor/aos/aos.js' %}"></script>
+    <script src="{% static 'vendor/swiper/swiper-bundle.min.js' %}"></script>
+    <script src="{% static 'vendor/purecounter/purecounter_vanilla.js' %}"></script>
+    <script src="{% static 'vendor/glightbox/js/glightbox.min.js' %}"></script>
+    <script src="{% static 'vendor/imagesloaded/imagesloaded.pkgd.min.js' %}"></script>
+    <script src="{% static 'vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+
+    <!-- Main JS File -->
+    <script src="{% static 'js/main.js' %}"></script>
+
+    {% block extra_scripts %}{% endblock %}
+</body>
+
+</html>

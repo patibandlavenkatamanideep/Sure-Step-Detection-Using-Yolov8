@@ -1,0 +1,44 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="PyPackageRequirementsInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredPackages">
+        <list>
+          <option value="langchain" />
+          <option value="flask" />
+          <option value="sentence-transformers" />
+          <option value="pypdf" />
+          <option value="python-dotenv" />
+          <option value="langchain-pinecone" />
+          <option value="langchain-openai" />
+          <option value="langchain-community" />
+          <option value="tensorflow-macos" />
+          <option value="tensorflow-metal" />
+          <option value="pandas" />
+          <option value="gdown" />
+          <option value="dvc" />
+          <option value="mlflow" />
+          <option value="notebook" />
+          <option value="numpy" />
+          <option value="matplotlib" />
+          <option value="seaborn" />
+          <option value="python-box" />
+          <option value="tqdm" />
+          <option value="ensure" />
+          <option value="joblib" />
+          <option value="scipy" />
+          <option value="pyYAML" />
+          <option value="types-PyYAML" />
+          <option value="Flask-Cors" />
+        </list>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyUnresolvedReferencesInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredIdentifiers">
+        <list>
+          <option value="src.*" />
+        </list>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>

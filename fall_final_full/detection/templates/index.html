@@ -1,0 +1,422 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<style>
+  .team-member {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 10px;
+    background: #fff;
+}
+
+.member-img {
+    width: 100%;
+    height: 250px; /* Ensure uniform height */
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.member-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures images are scaled properly */
+}
+
+.member-info {
+    margin-top: 15px;
+}
+
+.social {
+    margin-top: 10px;
+}
+
+.social a {
+    margin: 0 5px;
+    color: #333;
+    font-size: 18px;
+    transition: 0.3s;
+}
+
+.social a:hover {
+    color: #007bff;
+}
+
+</style>
+  <main class="main">
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero section dark-background">
+
+      <div class="container">
+        <div class="row gy-4">
+          <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center" data-aos="fade-in">
+            <h1>Revolutionizing Fall Detection with SureStep Detection</h1>
+            <p>Experience state-of-the-art AI-powered fall detection. Upload images or videos to detect falls in real-time with
+              unparalleled accuracy.</p>
+            <div class="d-flex">
+              <a href="#about" class="btn-get-started">Get Started</a>
+            </div>
+          </div>
+          <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-out" data-aos-delay="100">
+            <img src="{% static 'img/hero-img.png' %}" class="img-fluid animated" alt="">
+          </div>
+        </div>
+      </div>
+
+    </section><!-- /Hero Section -->
+
+    <!-- About Section -->
+    <section id="about" class="about section">
+
+      <div class="container">
+
+        <div class="row gy-4">
+
+          <div class="col-lg-6 position-relative order-lg-last" data-aos="fade-up" data-aos-delay="200">
+            <img src="https://media.springernature.com/m685/springer-static/image/art%3A10.1038%2Fs41598-021-81115-9/MediaObjects/41598_2021_81115_Fig1_HTML.png"  alt="">
+            <a href="https://www.youtube.com/watch?v=-OqpWlzmJ-k" class="glightbox pulsating-play-btn"></a>
+          </div>
+
+          <div class="col-lg-6 content" data-aos="fade-up" data-aos-delay="100">
+            <h3>About SureStep Detection</h3>
+            <p>
+              SureStep Detection is an advanced AI-driven fall detection system leveraging YOLOv8 technology to analyze video
+              feeds and instantly identify fall events. Designed for various environments, including homes, healthcare facilities,
+              and public spaces, it ensures timely alerts to caregivers, family members, or emergency services, minimizing
+              response time and enhancing safety.
+            </p>
+            <ul>
+              <li>
+                <i class="bi bi-diagram-3"></i>
+                <div>
+                  <h5>AI-Powered Real-Time Fall Detection</h5>
+                  <p>Utilizing cutting-edge AI and deep learning algorithms, our system delivers highly accurate fall detection
+                    with minimal false alarms.</p>
+                </div>
+              </li>
+              <li>
+                <i class="bi bi-fullscreen-exit"></i>
+                <div>
+                  <h5>Scalable and Adaptable for Various Settings</h5>
+                  <p>SureStep Detection is designed to function seamlessly in different environments, making it suitable for
+                    homes, hospitals, and public spaces.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section><!-- /About Section -->
+
+    <!-- Featured Services Section -->
+    <section id="featured-services" class="featured-services section">
+    
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Our Key Services</h2>
+        <p>Explore our advanced AI-driven fall detection solutions tailored for safety and reliability.</p>
+      </div><!-- End Section Title -->
+    
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+    
+        <div class="row gy-5">
+    
+          <div class="col-xl-4 col-md-6" data-aos="zoom-in" data-aos-delay="200">
+            <div class="service-item">
+              <div class="img">
+                <img style="height: 200px; width: 400px;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4LzlwdCO9XRSpGBq3bAYTqBzO4hX27aiAWw&s" class="img-fluid" alt="Fall Detection">
+              </div>
+              <div class="details position-relative">
+                <div class="icon">
+                  <i class="bi bi-activity"></i>
+                </div>
+                
+                  <h3>AI-Powered Fall Detection</h3>
+                
+                <p>Accurately detect falls in real-time using our cutting-edge YOLOv8-based AI system.</p>
+              </div>
+            </div>
+          </div><!-- End Service Item -->
+    
+          <div class="col-xl-4 col-md-6" data-aos="zoom-in" data-aos-delay="300">
+            <div class="service-item">
+              <div class="img">
+                <img style="height: 200px; width: 400px;" src="https://viso.ai/wp-content/uploads/2021/09/deep-learning-fall-detection.jpg" class="img-fluid" alt="Video Analysis">
+              </div>
+              <div class="details position-relative">
+                <div class="icon">
+                  <i class="bi bi-camera-video"></i>
+                </div>
+                
+                  <h3>Video-Based Fall Analysis</h3>
+               
+                <p>Upload videos to analyze and identify potential falls with precision.</p>
+              </div>
+            </div>
+          </div><!-- End Service Item -->
+    
+          <div class="col-xl-4 col-md-6" data-aos="zoom-in" data-aos-delay="400">
+            <div class="service-item">
+              <div class="img">
+                <img style="height: 200px; width: 400px;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqqduCW98tZNF4qreeWRS2Ug6JrM1rMps7Dw&s" class="img-fluid" alt="Image Upload">
+              </div>
+              <div class="details position-relative">
+                <div class="icon">
+                  <i class="bi bi-image"></i>
+                </div>
+                
+                  <h3>Image-Based Fall Detection</h3>
+                
+                <p>Upload images to detect falls instantly with our advanced AI model.</p>
+              </div>
+            </div>
+          </div><!-- End Service Item -->
+    
+          <div class="col-xl-4 col-md-6" data-aos="zoom-in" data-aos-delay="500">
+            <div class="service-item">
+              <div class="img">
+                <img style="height: 200px; width: 400px;" src="https://m.media-amazon.com/images/I/61Cq3nJTJ9L.jpg" class="img-fluid" alt="Alert System">
+              </div>
+              <div class="details position-relative">
+                <div class="icon">
+                  <i class="bi bi-bell"></i>
+                </div>
+                
+                  <h3>Instant Alert System</h3>
+                </a>
+                <p>Receive real-time alerts upon fall detection for immediate response.</p>
+              </div>
+            </div>
+          </div><!-- End Service Item -->
+    
+          <div class="col-xl-4 col-md-6" data-aos="zoom-in" data-aos-delay="600">
+            <div class="service-item">
+              <div class="img">
+                <img style="height: 200px; width: 400px;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6wfndBgprEB-vY3rzuuiUwVNYnYE8GS731g&s" class="img-fluid" alt="Data Security">
+              </div>
+              <div class="details position-relative">
+                <div class="icon">
+                  <i class="bi bi-shield-lock"></i>
+                </div>
+                
+                  <h3>Secure & Private</h3>
+                </a>
+                <p>Our system prioritizes data security and privacy for all users.</p>
+              </div>
+            </div>
+          </div><!-- End Service Item -->
+    
+          <div class="col-xl-4 col-md-6" data-aos="zoom-in" data-aos-delay="700">
+            <div class="service-item">
+              <div class="img">
+                <img style="height: 200px; width: 400px;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEYmm6mjrAK1O5lIwaWXdwxbmp9IbyXv7sxg&s" style="height: 200px; width: 400px;" class="img-fluid" alt="Custom Solutions">
+              </div>
+              <div class="details position-relative">
+                <div class="icon">
+                  <i class="bi bi-tools"></i>
+                </div>
+                
+                  <h3>Custom AI Solutions</h3>
+                
+                <p>Tailor our AI-powered fall detection for your specific needs and settings.</p>
+              </div>
+            </div>
+          </div><!-- End Service Item -->
+    
+        </div>
+    
+      </div>
+    
+    </section><!-- /Featured Services Section -->
+
+    <!-- Features Section -->
+    <section id="features" class="features section">
+    
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Key Features</h2>
+        <p>Explore the cutting-edge features of SureStep Detection for accurate and real-time fall detection.</p>
+      </div><!-- End Section Title -->
+    
+      <div class="container">
+    
+        <div class="row gy-4 align-items-center features-item">
+          <div class="col-md-5 d-flex align-items-center" data-aos="zoom-out" data-aos-delay="100">
+            <img style="width: 480px; height: 260px;" src="https://hackster.imgix.net/uploads/attachments/784179/fall_ZbeWMFAaB3.png?auto=compress&w=900&h=675&fit=min&fm=jpg" class="img-fluid" alt="Real-Time Monitoring">
+          </div>
+          <div class="col-md-7" data-aos="fade-up" data-aos-delay="100">
+            <h3>Real-Time Fall Detection</h3>
+            <p class="fst-italic">
+              Utilizing advanced AI technology, SureStep Detection continuously monitors for falls, ensuring rapid alerts
+              and response.
+            </p>
+            <ul>
+              <li><i class="bi bi-check"></i><span> High-precision detection using YOLOv8 AI models.</span></li>
+              <li><i class="bi bi-check"></i> <span>Instant notifications sent to caregivers or emergency services.</span>
+              </li>
+              <li><i class="bi bi-check"></i> <span>Seamless integration with smart home and medical systems.</span></li>
+            </ul>
+          </div>
+        </div><!-- Features Item -->
+    
+        <div class="row gy-4 align-items-center features-item">
+          <div class="col-md-5 order-1 order-md-2 d-flex align-items-center" data-aos="zoom-out" data-aos-delay="200">
+            <img style="width: 480px; height: 260px;" src="https://www.digifort.com/img/produtos/analise-avancada-de-video/monitor.png" class="img-fluid" alt="Video Analysis">
+          </div>
+          <div class="col-md-7 order-2 order-md-1" data-aos="fade-up" data-aos-delay="200">
+            <h3>Advanced Video Analysis</h3>
+            <p class="fst-italic">
+              Upload and analyze videos to detect fall incidents with high accuracy.
+            </p>
+            <p>
+              Our AI-powered system processes video data efficiently, identifying potential fall scenarios and minimizing
+              false alarms.
+            </p>
+          </div>
+        </div><!-- Features Item -->
+    
+        <div class="row gy-4 align-items-center features-item">
+          <div class="col-md-5 d-flex align-items-center" data-aos="zoom-out">
+            <img style="width: 480px; height: 260px;" src="https://i.ytimg.com/vi/GWBfOgB6xxE/maxresdefault.jpg" class="img-fluid" alt="Customizable Alerts">
+          </div>
+          <div class="col-md-7" data-aos="fade-up">
+            <h3>Customizable Alert System</h3>
+            <p>Ensure immediate response with tailor-made alert configurations for different users.</p>
+            <ul>
+              <li><i class="bi bi-check"></i> <span>SMS, email, and app notifications for emergency contacts.</span></li>
+              <li><i class="bi bi-check"></i><span> Custom alert sensitivity settings for different environments.</span>
+              </li>
+              <li><i class="bi bi-check"></i> <span>Integration with wearable devices and home security systems.</span></li>
+            </ul>
+          </div>
+        </div><!-- Features Item -->
+    
+        <div class="row gy-4 align-items-center features-item">
+          <div class="col-md-5 order-1 order-md-2 d-flex align-items-center" data-aos="zoom-out">
+            <img style="width: 480px; height: 260px;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6wfndBgprEB-vY3rzuuiUwVNYnYE8GS731g&s" class="img-fluid" alt="Data Security">
+          </div>
+          <div class="col-md-7 order-2 order-md-1" data-aos="fade-up">
+            <h3>Secure and Private</h3>
+            <p class="fst-italic">
+              Your safety, privacy, and data security are our top priorities.
+            </p>
+            <p>
+              SureStep Detection employs state-of-the-art encryption and data protection measures, ensuring compliance with
+              healthcare privacy regulations.
+            </p>
+          </div>
+        </div><!-- Features Item -->
+    
+      </div>
+    
+    </section><!-- /Features Section -->
+
+
+    <!-- Team Section -->
+    <section id="team" class="team section">
+    
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Meet Our Team</h2>
+        <p>Our team of experts is dedicated to advancing AI-powered fall detection and safety solutions.</p>
+      </div><!-- End Section Title -->
+    
+      <div class="container">
+        <div class="row gy-4">
+          <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
+            <div class="team-member">
+              <div class="member-img">
+                <img src="{% static 'img/1.png' %}" class="img-fluid" alt="John Doe">
+              </div>
+              <div class="member-info">
+                <h4>Pavan Reddy</h4>
+                <span>Frontend Developer (UI Designer)</span>
+              </div>
+              <div class="social">
+                <a href=""><i class="bi bi-twitter"></i></a>
+                <a href=""><i class="bi bi-facebook"></i></a>
+                <a href=""><i class="bi bi-instagram"></i></a>
+                <a href=""><i class="bi bi-linkedin"></i></a>
+              </div>
+            </div>
+          </div><!-- End Team Member -->
+      
+          <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
+            <div class="team-member">
+              <div class="member-img">
+                <img src="{% static 'img/2.png' %}" class="img-fluid" alt="Jane Smith">
+              </div>
+              <div class="member-info">
+                <h4>Venkata Manideep</h4>
+                <span>Model Training & Frontend Support</span>
+              </div>
+              <div class="social">
+                <a href=""><i class="bi bi-twitter"></i></a>
+                <a href=""><i class="bi bi-facebook"></i></a>
+                <a href=""><i class="bi bi-instagram"></i></a>
+                <a href=""><i class="bi bi-linkedin"></i></a>
+              </div>
+            </div>
+          </div><!-- End Team Member -->
+      
+          <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="300">
+            <div class="team-member">
+              <div class="member-img">
+                <img src="{% static 'img/3.png' %}" class="img-fluid" alt="Michael Brown">
+              </div>
+              <div class="member-info">
+                <h4>Sanjana</h4>
+                <span>Image Model Training & Database</span>
+              </div>
+              <div class="social">
+                <a href=""><i class="bi bi-twitter"></i></a>
+                <a href=""><i class="bi bi-facebook"></i></a>
+                <a href=""><i class="bi bi-instagram"></i></a>
+                <a href=""><i class="bi bi-linkedin"></i></a>
+              </div>
+            </div>
+          </div><!-- End Team Member -->
+      
+          <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="400">
+            <div class="team-member">
+              <div class="member-img">
+                <img src="{% static 'img/4.png' %}" class="img-fluid" alt="Emily Davis">
+              </div>
+              <div class="member-info">
+                <h4>Sadhikha noor</h4>
+                <span>Backend Developer (Integration)</span>
+              </div>
+              <div class="social">
+                <a href=""><i class="bi bi-twitter"></i></a>
+                <a href=""><i class="bi bi-facebook"></i></a>
+                <a href=""><i class="bi bi-instagram"></i></a>
+                <a href=""><i class="bi bi-linkedin"></i></a>
+              </div>
+            </div>
+          </div><!-- End Team Member -->
+        </div>
+      </div>
+
+    
+    </section><!-- /Team Section -->
+
+
+  </main>
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
+  
+  <!-- Preloader -->
+  <div id="preloader"></div>
+  
+  {% endblock %}

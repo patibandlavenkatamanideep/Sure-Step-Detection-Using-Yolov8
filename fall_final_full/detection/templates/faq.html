@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}FAQs - SureStep Detection{% endblock %}
+
+{% block content %}
+
+<!-- FAQ Section -->
+<section id="faq" class="faq section">
+
+    <!-- Section Title -->
+    <div class="container section-title">
+        <h2>Frequently Asked Questions</h2>
+        <p>Find answers to common questions about SureStep Detection, our AI-powered fall detection system.</p>
+    </div><!-- End Section Title -->
+
+    <div class="container">
+        <div class="row faq-item" data-aos-delay="100">
+            <div class="col-lg-5 d-flex align-items-center">
+                <i class="bi bi-question-circle display-5"></i>
+                <h4>How does SureStep Detection identify falls?</h4>
+            </div>
+            <div class="col-lg-7">
+                <p>
+                    SureStep Detection leverages advanced AI models, such as YOLOv8, to analyze real-time video feeds.
+                    It accurately detects falls by recognizing patterns in movement and posture, minimizing false
+                    alarms.
+                </p>
+            </div>
+        </div><!-- End FAQ Item -->
+
+        <div class="row faq-item" data-aos-delay="200">
+            <div class="col-lg-5 d-flex align-items-center">
+                <i class="bi bi-question-circle display-5"></i>
+                <h4>What happens when a fall is detected?</h4>
+            </div>
+            <div class="col-lg-7">
+                <p>
+                    Upon detecting a fall, the system automatically sends alerts to designated caregivers, family
+                    members,
+                    or emergency services. This ensures timely assistance and enhances user safety.
+                </p>
+            </div>
+        </div><!-- End FAQ Item -->
+
+        <div class="row faq-item" data-aos-delay="300">
+            <div class="col-lg-5 d-flex align-items-center">
+                <i class="bi bi-question-circle display-5"></i>
+                <h4>Can SureStep Detection work in different environments?</h4>
+            </div>
+            <div class="col-lg-7">
+                <p>
+                    Yes! The system is designed to be scalable and adaptable. It can be deployed in homes, hospitals,
+                    elderly care centers, and public spaces, ensuring protection in various environments.
+                </p>
+            </div>
+        </div><!-- End FAQ Item -->
+
+        <div class="row faq-item" data-aos-delay="400">
+            <div class="col-lg-5 d-flex align-items-center">
+                <i class="bi bi-question-circle display-5"></i>
+                <h4>Does SureStep Detection require wearable devices?</h4>
+            </div>
+            <div class="col-lg-7">
+                <p>
+                    No. Unlike traditional fall detection solutions that rely on wearables, SureStep Detection operates
+                    using cameras and AI-based image analysis, making it non-intrusive and hassle-free.
+                </p>
+            </div>
+        </div><!-- End FAQ Item -->
+
+        <div class="row faq-item" data-aos-delay="500">
+            <div class="col-lg-5 d-flex align-items-center">
+                <i class="bi bi-question-circle display-5"></i>
+                <h4>How secure is the system in terms of privacy?</h4>
+            </div>
+            <div class="col-lg-7">
+                <p>
+                    We prioritize user privacy by ensuring that video feeds are processed securely. The system can be
+                    configured
+                    to store data locally or transmit alerts without retaining sensitive footage.
+                </p>
+            </div>
+        </div><!-- End FAQ Item -->
+
+    </div>
+
+</section><!-- /FAQ Section -->
+
+{% endblock %}
